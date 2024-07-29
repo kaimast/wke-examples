@@ -1,0 +1,22 @@
+[config]
+default-prelude = "pyenv"
+
+[ubuntu]
+required-repositories = ["ppa:deadsnakes/ppa"]
+required-packages = [
+    "build-essential", "pkg-config", "lld",
+    "openssl", "libssl-dev", "liblzma-dev",
+    "python3.11", "python3.11-venv", "python3.11-dev"
+]
+
+[preludes]
+pyenv = "Sets up (if needed) and enables the python enviornment"
+
+[targets.setup-mongodb]
+arguments = [{name="buildprofile", default="opt"}, {name="force-rebuild", default=0}]
+
+[targets.mongodb-nodes]
+arguments = []
+
+[targets.client-ops]
+arguments = [{ name="server_address", default="" }]

@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Make source python environment exists
+if [ ! -f ${HOME}/pyenv/bin/activate ]; then python3.11 -m venv pyenv; fi
+
+source ${HOME}/pyenv/bin/activate

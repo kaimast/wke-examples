@@ -1,0 +1,30 @@
+#! /bin/env bash
+
+BUILD_PROFILE=$1
+FORCE_REBUILD=$2
+
+PYTHON=${HOME}/pyenv/bin/python3
+
+# If force cleanup is set, remove (possibly) existing repo
+if [[ ${FORCE_REBUILD} != "0" ]]; then
+    echo "Rebuild forced"
+    rm -rf mongo
+fi
+
+
+# Fetch MongoDB's code from GitHub
+if [[ ! -e mongo ]]; then
+    git clone https://github.com/mongodb/mongo.git
+fi
+
+cd mongo
+git fetch
+git checkout v7.2
+
+# Install all required pythong packages 
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+$PYTHON -m pip install 'poetry==1.5.1'
+$PYTHON -m poetry install --no-root --sync
+
+# Build and install mongod
+$PYTHON buildscripts/scons.py install-mongod --buildprofile=${BUILD_PROFILE}
