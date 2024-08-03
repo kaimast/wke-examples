@@ -1,0 +1,12 @@
+#! /bin/bash
+
+DB_FOLDER=./mongodb-data
+
+# Ensure any previous process has stopped
+killall mongod -9
+
+# Remove previous database, if any
+rm -rf ${DB_FOLDER}
+mkdir -p ${DB_FOLDER} 
+
+mongod --dbpath ${DB_FOLDER} --bind_ip_all

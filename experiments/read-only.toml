@@ -1,0 +1,13 @@
+[experiment]
+about="Runs a read only worload with a varying number of entries in the database"
+num_iterations=3
+
+[parameters]
+num-entries = [1,10,100,1000,10000,100000,1000000]
+num-operations = 10000
+write-chance=0
+
+[[plots]]
+type = "line"
+x-axis = "num-entries"
+y-axis = "throughput"

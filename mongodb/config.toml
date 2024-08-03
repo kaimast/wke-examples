@@ -4,7 +4,7 @@ default-prelude = "pyenv"
 [ubuntu]
 required-repositories = ["ppa:deadsnakes/ppa"]
 required-packages = [
-    "build-essential", "pkg-config", "lld",
+    "build-essential", "pkg-config", "lld", "curl",
     "openssl", "libssl-dev", "liblzma-dev",
     "python3.11", "python3.11-venv", "python3.11-dev"
 ]
@@ -12,11 +12,28 @@ required-packages = [
 [preludes]
 pyenv = "Sets up (if needed) and enables the python enviornment"
 
-[targets.setup-mongodb]
-arguments = [{name="buildprofile", default="opt"}, {name="force-rebuild", default=0}]
+[targets]
+install-pymongo = []
+install-mongodb = []
 
-[targets.mongodb-nodes]
+[targets.run-mongod]
+about = "Runs the monogdb server processs"
 arguments = []
 
+[targets.build-mongodb]
+about = "Build MongoDB from source"
+arguments = [{name="build-profile", default="default"}, {name="force-rebuild", default=0}]
+
+[targets.prepare-data]
+about = "Sets up the data needed to run experiments"
+arguments = [{ name="server-address"}, { name="num-entries", default=1000 }]
+
 [targets.client-ops]
-arguments = [{ name="server_address", default="" }]
+about = "Issues client operations"
+arguments = [
+    { name="server-address" },
+    { name="num-entries", default=1000 },
+    { name="client-multiply", default=8},
+    { name="num-operations", default=10000},
+    { name="write-chance", default=50 }
+]
