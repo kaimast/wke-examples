@@ -22,9 +22,14 @@ git fetch
 git checkout v7.2
 
 # Install all required pythong packages 
-export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+# export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 $PYTHON -m pip install 'poetry==1.5.1'
 $PYTHON -m poetry install --no-root --sync
 
 # Build and install mongod
-$PYTHON buildscripts/scons.py install-mongod --buildprofile=${BUILD_PROFILE}
+$PYTHON buildscripts/scons.py install-mongod --build-profile=${BUILD_PROFILE} \
+    --disable-warnings-as-errors
+
+INSTALL_DIR=${HOME}/.local/bin
+mkdir -p ${INSTALL_DIR} 
+cp build/install/bin/mongod ${INSTALL_DIR}/mongod

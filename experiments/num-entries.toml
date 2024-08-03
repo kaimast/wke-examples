@@ -1,0 +1,20 @@
+[experiment]
+about="Runs different worload with a varying number of entries in the database"
+num_iterations=3
+
+[parameters]
+num-entries = { base=10, start=0, end=6 }
+write-chance = [0,25,50,75,100]
+num-operations = 10000
+
+[[plots]]
+type = "line"
+x-axis = "num-entries"
+y-axis = "throughput"
+group-by = "write-chance"
+
+[[plots]]
+label = "read-only"
+type = "line"
+x-axis = "num-entries"
+y-axis = "throughput"

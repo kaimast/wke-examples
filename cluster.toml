@@ -5,5 +5,5 @@ username="cskama"
 workdir="/users/cskama"
 
 [machines]
-node0 = { external_addr="128.105.144.185", internal_addr="10.1.1.1" }
-node1 = { external_addr="128.105.144.200", internal_addr="10.1.1.2" }
+node0 = { external_addr="128.105.144.25", internal_addr="10.1.1.1" }
+node1 = { external_addr="128.105.144.27", internal_addr="10.1.1.2" }

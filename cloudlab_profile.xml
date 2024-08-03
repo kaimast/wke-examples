@@ -1,0 +1,25 @@
+<rspec xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.geni.net/resources/rspec/3" xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xsi:schemaLocation="http://www.geni.net/resources/rspec/3 http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <link client_id="local_net">
+    <interface_ref client_id="node0:if0"/>
+    <interface_ref client_id="node1:if0"/>
+    <emulab:best_effort enabled="true"/>
+  </link>
+  <node client_id="node0" exclusive="true">
+    <sliver_type name="raw">
+      <disk_image name="urn:publicid:IDN+utah.cloudlab.us+image+emulab-ops//UBUNTU24-64-BETA"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <interface client_id="node0:if0">
+      <ip address="10.1.1.1" netmask="255.255.255.0" type="ipv4"/>
+    </interface>
+  </node>
+  <node client_id="node1" exclusive="true">
+    <sliver_type name="raw">
+      <disk_image name="urn:publicid:IDN+utah.cloudlab.us+image+emulab-ops//UBUNTU24-64-BETA"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <interface client_id="node1:if0">
+      <ip address="10.1.1.2" netmask="255.255.255.0" type="ipv4"/>
+    </interface>
+  </node>
+</rspec>

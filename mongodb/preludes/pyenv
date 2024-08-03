@@ -4,3 +4,5 @@
 if [ ! -f ${HOME}/pyenv/bin/activate ]; then python3.11 -m venv pyenv; fi
 
 source ${HOME}/pyenv/bin/activate
+
+export PATH=${PATH}:${HOME}/.local/bin
